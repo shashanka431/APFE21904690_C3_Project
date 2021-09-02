@@ -59,6 +59,22 @@ class RestaurantServiceTest {
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //create a restaurant object with its name, location, opening time, closing time and menu
+    //should be given items of order to prepare the selectedItems object
+    //price of each of the selectedItem is got from the Item class
+    //orderValue is calculated by adding each of the item price which is retrieved from the Item class
+    //asserting using assertEquals method of Junit
+    @Test
+    public void adding_each_of_the_selected_item_price_to_get_order_value() {
+        Item item1 = new Item("Sweet corn soup", 119);
+        Item item2 = new Item("Vegetable lasagne", 269);
+        List<Item> selectedItems = new ArrayList<>();
+        selectedItems.add(item1);
+        selectedItems.add(item2);
+        int orderValue = restaurant.getOrderTotal(selectedItems);
+        assertEquals(388,orderValue);
+    }
+
     @AfterEach
     public void after_each_method(){
         service = null;
